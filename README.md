@@ -20,8 +20,11 @@ Alternatively, you can clone the GitHub repository:
 
 ```bash
 git clone https://github.com/panchr/python-bittrex.git
+cd python-bittrex
 python setup.py install
 ```
+
+Or, as a single line that you can copy to install: `git clone https://github.com/panchr/python-bittrex.git && cd python-bittrex && python setup.py install`.
 
 ### Testing
 
