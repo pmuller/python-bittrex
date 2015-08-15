@@ -1,20 +1,22 @@
 python-bittrex
 ==============
 
-Python bindings for bittrex.  I am Not associated -- use at your own risk, etc.
+These are Python bindings for the official Bittrex API.
+
+**Note: I am not associated with Bitttrex and this is an _unofficial_ API wrapper.**
+Use at your own risk.
 
 Tips are appreciated:
-* BTC: 1D7F9ZF6BCoCh2MncK15jxHM1T5BPX9Ajd
-* LTC: LaasG9TRa9p32noN2oKUVVqrDFp4Ja1NK3
+* BTC: 1Lc5N89huRT4aBxahNEMkCzVx7DUDAgem2
+* LTC: LQJ8sjD7YZ7YgWajLtaYwn5xbUahFLsgFo
+* DOGE: DQtoZeA4y5y8ZN9Hezw7sy9GQkGCRjzyK7
 
 
 In order to run the integration tests, a file called "secrets.json" must be added to the test folder.
 Structure it as follows, adding your API keys:
-<pre>
-<code>
+```
 {
   "key": "mykey",
   "secret": "mysecret"
 }
-</code>
-</pre>
+```
