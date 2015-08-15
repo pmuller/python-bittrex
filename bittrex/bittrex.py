@@ -1,3 +1,5 @@
+# Rushy Panchal
+
 """
    See https://bittrex.com/Home/Api
 """
