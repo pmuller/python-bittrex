@@ -339,7 +339,7 @@ class Bittrex(object):
 		"""
 		return self.api_query('getorder', {'uuid': uuid})
 
-	def get_order_history(self, market = "", count = 25):
+	def get_order_history(self, market = ""):
 		"""
 		Used to retrieve your order history
 
@@ -348,20 +348,12 @@ class Bittrex(object):
 		:param market: Bittrex market identifier (i.e BTC-DOGE)
 		:type market: str
 
-		:param count: The number of records to return (default 25)
-		:type count: int
-
 		:return:
 		:rtype : dict
 		"""
-		options = {}
-		if market:
-			options['market'] = market
-		if count:
-			options['count'] = count
-		return self.api_query('getorderhistory', options)
+		return self.api_query('getorderhistory', {"market": market})
 	
-	def get_withdrawal_history(self, currency = "", count = 25):
+	def get_withdrawal_history(self, currency = ""):
 		"""
 		Used to retrieve your withdrawal history
 
@@ -370,20 +362,12 @@ class Bittrex(object):
 		:param currency: String literal for the currency (ie. BTC) (defaults to all)
 		:type currency: str
 
-		:param count: The number of records to return (default 25)
-		:type count: int
-
 		:return:
 		:rtype : dict
 		"""
-		options = {}
-		if currency:
-			options['currency'] = currency
-		if count:
-			options['count'] = count
-		return self.api_query('getwithdrawalhistory', options)
+		return self.api_query('getwithdrawalhistory', {"currency": currency})
 
-	def get_deposit_history(self, currency = "", count = 25):
+	def get_deposit_history(self, currency = ""):
 		"""
 		Used to retrieve your deposit history
 
@@ -392,15 +376,7 @@ class Bittrex(object):
 		:param currency: String literal for the currency (ie. BTC) (defaults to all)
 		:type currency: str
 
-		:param count: The number of records to return (default 25)
-		:type count: int
-
 		:return:
 		:rtype : dict
 		"""
-		options = {}
-		if currency:
-			options['currency'] = currency
-		if count:
-			options['count'] = count
-		return self.api_query('getdeposithistory', options)
+		return self.api_query('getdeposithistory', {"currency": currency})
