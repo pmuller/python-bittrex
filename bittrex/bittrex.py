@@ -9,6 +9,14 @@ import time
 import requests
 import hmac
 import hashlib
+import sys
+
+
+if sys.version_info.major == 2:
+    urlencode = urllib.urlencode
+else:
+    urlencode = urllib.parse.urlencode
+
 
 BUY_ORDERBOOK = 'buy'
 SELL_ORDERBOOK = 'sell'
@@ -59,9 +67,11 @@ class Bittrex(object):
 		elif method in self.account_set:
 			request_url = (base_url % 'account') + method + '?apikey=' + self.api_key + "&nonce=" + nonce + '&'
 
-		request_url += urllib.urlencode(options)
+		request_url += urlencode(options)
 
-		signature = hmac.new(self.api_secret, request_url, hashlib.sha512).hexdigest()
+		signature = hmac.new(
+                    self.api_secret.encode('ascii'),
+                    request_url.encode('ascii'), hashlib.sha512).hexdigest()
 
 		headers = {"apisign": signature}
 
