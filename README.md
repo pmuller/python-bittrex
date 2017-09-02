@@ -36,3 +36,8 @@ Structure it as follows, adding your API keys:
   "secret": "mysecret"
 }
 ```
+
+As an alternative, you can pass BitTrex credentials using these environment
+variables:
+* BITTREX_API_KEY
+* BITTREX_API_SECRET

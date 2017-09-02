@@ -2,6 +2,8 @@ __author__ = 'eric'
 
 import unittest
 import json
+import os
+
 from bittrex.bittrex import Bittrex
 
 
@@ -63,9 +65,16 @@ class TestBittrexAccountAPI(unittest.TestCase):
     }
     """
     def setUp(self):
-        with open("secrets.json") as secrets_file:
-            self.secrets = json.load(secrets_file)
-            secrets_file.close()
+        if 'BITTREX_API_KEY' in os.environ \
+                and 'BITTREX_API_SECRET' in os.environ:
+            self.secrets = {
+                'key': os.environ['BITTREX_API_KEY'],
+                'secret': os.environ['BITTREX_API_SECRET'],
+            }
+        else:
+            with open("secrets.json") as secrets_file:
+                self.secrets = json.load(secrets_file)
+
         self.bittrex = Bittrex(self.secrets['key'], self.secrets['secret'])
 
     def test_handles_invalid_key_or_secret(self):
