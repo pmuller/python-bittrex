@@ -26,12 +26,13 @@ class Bittrex(object):
 	"""
 	Used for requesting Bittrex with API key and API secret
 	"""
-	def __init__(self, api_key, api_secret):
+	def __init__(self, api_key, api_secret, session=None):
 		self.api_key = str(api_key) if api_key is not None else ''
 		self.api_secret = str(api_secret) if api_secret is not None else ''
 		self.public_set = set(PUBLIC_SET)
 		self.market_set = set(MARKET_SET)
 		self.account_set = set(ACCOUNT_SET)
+		self.session = session or requests.Session()
 
 	def api_query(self, method, options=None):
 		"""
@@ -65,7 +66,7 @@ class Bittrex(object):
 
 		headers = {"apisign": signature}
 
-		ret = requests.get(request_url, headers=headers)
+		ret = self.session.get(request_url, headers=headers)
 		return ret.json()
 
 	def get_markets(self):
